@@ -10,6 +10,6 @@ export class TicTacToe {
   }
 
   playIn(position: number) {
-    this.board = "X|2|3\n-----\n4|5|6\n-----\n7|8|9"
+    this.board = this.board.replace(position.toString(), "X")
   }
 }
