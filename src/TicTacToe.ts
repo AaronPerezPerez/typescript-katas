@@ -8,8 +8,12 @@ export class TicTacToe {
   }
 
   getStatus() {
-    if (this.board.includes("X|X|X")) return "p1 wins"
+    if (this.doesPlayer1Win()) return "p1 wins"
     return "playing"
+  }
+
+  private doesPlayer1Win() {
+    return this.board.includes("X|X|X")
   }
 
   playIn(position: number) {
