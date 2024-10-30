@@ -44,4 +44,14 @@ describe(TicTacToe, () => {
 
     expect(ticTacToe.getBoard()).toEqual("X|O|3\n-----\n4|5|6\n-----\n7|8|9")
   })
+
+  it("skips the play when a already marked position is attempted to be marked again", () => {
+    const ticTacToe = new TicTacToe()
+
+    ticTacToe.playIn(1)
+    ticTacToe.playIn(1)
+    ticTacToe.playIn(2)
+
+    expect(ticTacToe.getBoard()).toEqual("X|O|3\n-----\n4|5|6\n-----\n7|8|9")
+  })
 })
