@@ -94,4 +94,18 @@ describe(TicTacToe, () => {
     expect(ticTacToe.getBoard()).toEqual("O|O|O\n-----\nX|X|6\n-----\nX|8|9")
     expect(ticTacToe.getStatus()).toEqual("p2 wins")
   })
+
+  it("ends when player 2 has three symbols in a column", () => {
+    const ticTacToe = new TicTacToe()
+
+    ticTacToe.playIn(3)
+    ticTacToe.playIn(1)
+    ticTacToe.playIn(5)
+    ticTacToe.playIn(4)
+    ticTacToe.playIn(8)
+    ticTacToe.playIn(7)
+
+    expect(ticTacToe.getBoard()).toEqual("O|2|X\n-----\nO|X|6\n-----\nO|X|9")
+    expect(ticTacToe.getStatus()).toEqual("p2 wins")
+  })
 })
