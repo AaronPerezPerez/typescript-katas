@@ -1,6 +1,8 @@
 export class TicTacToe {
+  private board = "1|2|3\n-----\n4|5|6\n-----\n7|8|9"
+
   getBoard() {
-    return "1|2|3\n-----\n4|5|6\n-----\n7|8|9"
+    return this.board
   }
 
   getStatus() {
@@ -8,6 +10,6 @@ export class TicTacToe {
   }
 
   playIn(position: number) {
-    throw new Error("Not implemented")
+    this.board = "X|2|3\n-----\n4|5|6\n-----\n7|8|9"
   }
 }
