@@ -17,8 +17,9 @@ export class TicTacToe {
   private doesPlayer1Win() {
     const columnRegex =
       /^(X\|.\|.\n-----\nX\|.\|.\n-----\nX\|.\|.$)|(.\|X\|.\n-----\n.\|X\|.\n-----\n.\|X\|.$)|(.\|.\|X\n-----\n.\|.\|X\n-----\n.\|.\|X$)/
+    const diagonalRegex = /^(X\|.\|.\n-----\n.\|X\|.\n-----\n.\|.\|X$)|(.\|.\|X\n-----\n.\|X\|.\n-----\nX\|.\|.$)/
 
-    return this.board.includes("X|X|X") || this.board.match(columnRegex)
+    return this.board.includes("X|X|X") || this.board.match(columnRegex) || this.board.match(diagonalRegex)
   }
 
   private doesPlayer2Win() {
