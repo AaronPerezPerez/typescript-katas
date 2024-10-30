@@ -12,6 +12,8 @@ export class TicTacToe {
   }
 
   playIn(position: number) {
+    if (!this.board.includes(position.toString())) return
+
     if (this.isPlayer1Turn) this.board = this.board.replace(position.toString(), "X")
     if (!this.isPlayer1Turn) this.board = this.board.replace(position.toString(), "O")
     this.isPlayer1Turn = !this.isPlayer1Turn
