@@ -7,4 +7,10 @@ describe(TicTacToe, () => {
 
     expect(ticTacToe.getBoard()).toEqual("1|2|3\n-----\n4|5|6\n-----\n7|8|9")
   })
+
+  it("has a playing status", () => {
+    const ticTacToe = new TicTacToe()
+
+    expect(ticTacToe.getStatus()).toEqual("playing")
+  })
 })
