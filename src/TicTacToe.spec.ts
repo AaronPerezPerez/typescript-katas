@@ -108,4 +108,17 @@ describe(TicTacToe, () => {
     expect(ticTacToe.getBoard()).toEqual("O|2|X\n-----\nO|X|6\n-----\nO|X|9")
     expect(ticTacToe.getStatus()).toEqual("p2 wins")
   })
+
+  it("ends when player 1 has three symbols in a diagonal", () => {
+    const ticTacToe = new TicTacToe()
+
+    ticTacToe.playIn(1)
+    ticTacToe.playIn(3)
+    ticTacToe.playIn(5)
+    ticTacToe.playIn(6)
+    ticTacToe.playIn(9)
+
+    expect(ticTacToe.getBoard()).toEqual("X|2|O\n-----\n4|X|O\n-----\n7|8|X")
+    expect(ticTacToe.getStatus()).toEqual("p1 wins")
+  })
 })
