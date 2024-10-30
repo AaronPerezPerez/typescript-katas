@@ -55,7 +55,7 @@ describe(TicTacToe, () => {
     expect(ticTacToe.getBoard()).toEqual("X|O|3\n-----\n4|5|6\n-----\n7|8|9")
   })
 
-  it("ends when a player has three symbols in a row", () => {
+  it("ends when player 1 has three symbols in a row", () => {
     const ticTacToe = new TicTacToe()
 
     ticTacToe.playIn(1)
@@ -65,6 +65,19 @@ describe(TicTacToe, () => {
     ticTacToe.playIn(3)
 
     expect(ticTacToe.getBoard()).toEqual("X|X|X\n-----\nO|5|6\n-----\n7|8|O")
+    expect(ticTacToe.getStatus()).toEqual("p1 wins")
+  })
+
+  it("ends when player 1 has three symbols in a column", () => {
+    const ticTacToe = new TicTacToe()
+
+    ticTacToe.playIn(1)
+    ticTacToe.playIn(2)
+    ticTacToe.playIn(4)
+    ticTacToe.playIn(5)
+    ticTacToe.playIn(7)
+
+    expect(ticTacToe.getBoard()).toEqual("X|O|3\n-----\nX|O|6\n-----\nX|8|9")
     expect(ticTacToe.getStatus()).toEqual("p1 wins")
   })
 })
