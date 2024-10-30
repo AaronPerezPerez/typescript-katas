@@ -4,6 +4,6 @@ export class TicTacToe {
   }
 
   getStatus() {
-    throw Error("Not implemented")
+    return "playing"
   }
 }
