@@ -20,11 +20,19 @@ describe(TicTacToe, () => {
     expect(ticTacToe.getStatus()).toEqual("playing")
   })
 
-  it("can record a play by player 1", () => {
+  it("can record that the position 1 is marked by player 1", () => {
     const ticTacToe = new TicTacToe()
 
     ticTacToe.playIn(1)
 
     expect(ticTacToe.getBoard()).toEqual("X|2|3\n-----\n4|5|6\n-----\n7|8|9")
+  })
+
+  it("can record that the position 2 is marked by player 1", () => {
+    const ticTacToe = new TicTacToe()
+
+    ticTacToe.playIn(2)
+
+    expect(ticTacToe.getBoard()).toEqual("1|X|3\n-----\n4|5|6\n-----\n7|8|9")
   })
 })
