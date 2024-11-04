@@ -121,4 +121,20 @@ describe(TicTacToe, () => {
     expect(ticTacToe.getBoard()).toEqual("X|2|O\n-----\n4|X|O\n-----\n7|8|X")
     expect(ticTacToe.getStatus()).toEqual("p1 wins")
   })
+
+  it("sets the status to draw when no player wins", () => {
+    const ticTacToe = new TicTacToe()
+
+    ticTacToe.playIn(1)
+    ticTacToe.playIn(4)
+    ticTacToe.playIn(2)
+    ticTacToe.playIn(5)
+    ticTacToe.playIn(6)
+    ticTacToe.playIn(8)
+    ticTacToe.playIn(7)
+    ticTacToe.playIn(3)
+    ticTacToe.playIn(9)
+
+    expect(ticTacToe.getStatus()).toEqual("draw")
+  })
 })

@@ -10,8 +10,13 @@ export class TicTacToe {
   getStatus() {
     if (this.doesPlayer1Win()) return "p1 wins"
     if (this.doesPlayer2Win()) return "p2 wins"
+    if (this.doesTheGameIsDraw()) return "draw"
 
     return "playing"
+  }
+
+  private doesTheGameIsDraw() {
+    return this.board.match(/[0-9]/) == null
   }
 
   private doesPlayer1Win() {
