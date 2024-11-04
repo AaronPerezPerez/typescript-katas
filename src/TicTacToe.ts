@@ -7,10 +7,10 @@ export class TicTacToe {
   private isPlayer1Turn = true
 
   playIn(position: number) {
-    if (!this.board.includes(position.toString())) return
+    if (!this.positionIsAlreadyFilled(position)) return
+    const playingPlayer = this.getCurrentPlayer()
+    this.board = this.board.replace(position.toString(), playingPlayer)
 
-    if (this.isPlayer1Turn) this.board = this.board.replace(position.toString(), this.player1)
-    if (!this.isPlayer1Turn) this.board = this.board.replace(position.toString(), this.player2)
     this.isPlayer1Turn = !this.isPlayer1Turn
   }
 
@@ -19,12 +19,15 @@ export class TicTacToe {
   }
 
   getStatus(): GameStatus {
-    const currentPlayer = this.getCurrentPlayer()
-    if (this.doesPlayer1Win(this.player1)) return "p1 wins"
-    if (this.doesPlayer1Win(this.player2)) return "p2 wins"
+    if (this.doesPlayerWin(this.player1)) return "p1 wins"
+    if (this.doesPlayerWin(this.player2)) return "p2 wins"
     if (this.doesTheGameIsDraw()) return "draw"
 
     return "playing"
+  }
+
+  private positionIsAlreadyFilled(position: number) {
+    return this.board.includes(position.toString())
   }
 
   private getCurrentPlayer() {
@@ -34,7 +37,7 @@ export class TicTacToe {
     return this.board.match(/[0-9]/) == null
   }
 
-  private doesPlayer1Win(player: string) {
+  private doesPlayerWin(player: string) {
     const columnRegex = new RegExp(
       `^(${player}\\|.\\|.\\n-----\\n${player}\\|.\\|.\\n-----\\n${player}\\|.\\|.$)|(.\\|${player}\\|.\\n-----\\n.\\|${player}\\|.\\n-----\\n.\\|${player}\\|.$)|(.\\|.\\|${player}\\n-----\\n.\\|.\\|${player}\\n-----\\n.\\|.\\|${player}$)`,
     )
