@@ -2,8 +2,8 @@ export class GameOfLife {
   constructor(private initialGrid: boolean[][]) {}
 
   nextGeneration() {
-    const newGrid = this.initialGrid.map((row, x) => {
-      return row.map((cell, y) => {
+    this.initialGrid = this.initialGrid.map((row, x) =>
+      row.map((cell, y) => {
         const topCell = this.getCellValueAt(x, y - 1)
         const bottomCell = this.getCellValueAt(x, y + 1)
         const leftCell = this.getCellValueAt(x - 1, y)
@@ -25,13 +25,12 @@ export class GameOfLife {
 
         const moreThanOneNeighbour = aliveNeighboursCount >= 2
         const lessThanFourNeighbours = aliveNeighboursCount < 4
-        const shouldKeepAliveOrRevive =
-          (cell && moreThanOneNeighbour && lessThanFourNeighbours) || (!cell && aliveNeighboursCount == 3)
-        //  console.log({ x, y, cell, shouldKeepAlive, moreThanOneNeighbour, lessThanFourNeighbours, aliveNeighboursCount })
-        return shouldKeepAliveOrRevive
-      })
-    })
-    this.initialGrid = newGrid
+        const cellIsAliveAndShouldKeepAlive = cell && moreThanOneNeighbour && lessThanFourNeighbours
+        const cellIsDeadAndShouldRevive = !cell && aliveNeighboursCount == 3
+
+        return cellIsAliveAndShouldKeepAlive || cellIsDeadAndShouldRevive
+      }),
+    )
   }
 
   getGrid() {
