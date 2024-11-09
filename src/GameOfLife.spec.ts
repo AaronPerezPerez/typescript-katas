@@ -28,4 +28,22 @@ describe("Game of life", () => {
 
     expect(result).toEqual(expectedGrid)
   })
+  it("should maintain alive a cell that has three neighbours", () => {
+    const initialGrid = [
+      [false, true, true],
+      [false, true, true],
+      [false, false, false],
+    ]
+    const expectedGrid = [
+      [false, true, true],
+      [false, true, true],
+      [false, false, false],
+    ]
+    const gameOfLife = new GameOfLife(initialGrid)
+
+    gameOfLife.nextGeneration()
+    const result = gameOfLife.getGrid()
+
+    expect(result).toEqual(expectedGrid)
+  })
 })
