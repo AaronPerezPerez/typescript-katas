@@ -46,4 +46,22 @@ describe("Game of life", () => {
 
     expect(result).toEqual(expectedGrid)
   })
+  it("should kill a cell with more than three live neighbors dies.", () => {
+    const initialGrid = [
+      [true, true, true],
+      [false, true, true],
+      [false, false, false],
+    ]
+    const expectedGrid = [
+      [true, false, true],
+      [false, false, true],
+      [false, false, false],
+    ]
+    const gameOfLife = new GameOfLife(initialGrid)
+
+    gameOfLife.nextGeneration()
+    const result = gameOfLife.getGrid()
+
+    expect(result).toEqual(expectedGrid)
+  })
 })
