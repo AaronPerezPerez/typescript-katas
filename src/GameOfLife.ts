@@ -25,9 +25,10 @@ export class GameOfLife {
 
         const moreThanOneNeighbour = aliveNeighboursCount >= 2
         const lessThanFourNeighbours = aliveNeighboursCount < 4
-        const shouldKeepAlive = cell && moreThanOneNeighbour && lessThanFourNeighbours
+        const shouldKeepAliveOrRevive =
+          (cell && moreThanOneNeighbour && lessThanFourNeighbours) || (!cell && aliveNeighboursCount == 3)
         //  console.log({ x, y, cell, shouldKeepAlive, moreThanOneNeighbour, lessThanFourNeighbours, aliveNeighboursCount })
-        return shouldKeepAlive
+        return shouldKeepAliveOrRevive
       })
     })
     this.initialGrid = newGrid
