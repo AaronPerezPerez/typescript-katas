@@ -82,4 +82,23 @@ describe("Game of life", () => {
 
     expect(result).toEqual(expectedGrid)
   })
+  it("should work with two iterations.", () => {
+    const initialGrid = [
+      [true, false, false],
+      [false, true, false],
+      [false, false, true],
+    ]
+    const expectedGrid = [
+      [false, false, false],
+      [false, false, false],
+      [false, false, false],
+    ]
+    const gameOfLife = new GameOfLife(initialGrid)
+
+    gameOfLife.nextGeneration()
+    gameOfLife.nextGeneration()
+    const result = gameOfLife.getGrid()
+
+    expect(result).toEqual(expectedGrid)
+  })
 })
